@@ -1,4 +1,4 @@
-package org.nasa.nasapicturesofgivendays;
+package gov.nasa.nasapicturesofgivendays;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

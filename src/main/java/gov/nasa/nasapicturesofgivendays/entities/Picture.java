@@ -1,4 +1,4 @@
-package org.nasa.nasapicturesofgivendays;
+package gov.nasa.nasapicturesofgivendays.entities;
 
 public class Picture {
 
