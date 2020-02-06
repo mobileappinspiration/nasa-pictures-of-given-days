@@ -1,5 +1,7 @@
 package gov.nasa.nasapicturesofgivendays.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +18,8 @@ public class PictureController {
 	PictureService pictureService;
 
 	@GetMapping(value = "/pictures")
-	public ResponseEntity<Object> getPictureByDate(@RequestParam("hd") boolean hd, @RequestParam("date") String date) {
+	public ResponseEntity<Object> getPictureByDate(@RequestParam("hd") Optional<Boolean> hd,
+			@RequestParam("date") Optional<String> date) {
 
 		return ResponseEntity.status(HttpStatus.OK).body(pictureService.getPicture(hd, date));
 	}

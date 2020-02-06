@@ -2,6 +2,15 @@ package gov.nasa.nasapicturesofgivendays.entities;
 
 public class Picture {
 
+	public Picture(String date, String explanation, String title, String url) {
+
+		super();
+		this.setDate(date);
+		this.explanation = explanation;
+		this.title = title;
+		this.url = url;
+	}
+
 	public Picture() {
 		super();
 	}
@@ -12,14 +21,6 @@ public class Picture {
 
 	public void setCopyright(String copyright) {
 		this.copyright = copyright;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
 	}
 
 	public String getExplanation() {
@@ -68,6 +69,14 @@ public class Picture {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	private String copyright;

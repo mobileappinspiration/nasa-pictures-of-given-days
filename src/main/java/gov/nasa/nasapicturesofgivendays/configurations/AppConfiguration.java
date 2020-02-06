@@ -23,4 +23,7 @@ public class AppConfiguration {
 	@Value("${app.dateTime.format}")
 	private String dateTimeFormat;
 
+	public String getDateTimeFormat() {
+		return dateTimeFormat;
+	}
 }
