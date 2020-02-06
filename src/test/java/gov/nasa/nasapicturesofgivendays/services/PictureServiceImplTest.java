@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
 import gov.nasa.nasapicturesofgivendays.configurations.AppConfiguration;
 
 @RunWith(MockitoJUnitRunner.class)
-//@PrepareForTest({ ApplicationUtil.class })
 public class PictureServiceImplTest {
 
 	@Mock
@@ -36,15 +35,16 @@ public class PictureServiceImplTest {
 	public void setUp() {
 
 		pictureService = new PictureServiceImpl(appConfig, restTemplate);
+
+		when(appConfig.getServerUrl()).thenReturn("testUrl");
+		when(reponseEntity.getBody()).thenReturn(null);
+
 	}
 
 	@Test
 	public void whenGetPictureThenRestTemplateWasCompletedSuccessfully() {
 
-		// when
-		when(appConfig.getServerUrl()).thenReturn("testUrl");
 		when(restTemplate.getForEntity(anyString(), any())).thenReturn(reponseEntity);
-		when(reponseEntity.getBody()).thenReturn(null);
 
 		pictureService.getPicture(Optional.of(true), Optional.of("2020-2-6"));
 
@@ -55,19 +55,12 @@ public class PictureServiceImplTest {
 
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = NullPointerException.class)
 	public void whenGetPictureAndRestTemplateThrowException() {
 
 		// when
-		when(appConfig.getServerUrl()).thenReturn("testUrl");
-		when(restTemplate.getForEntity(anyString(), any())).thenThrow(new Exception());
-
-		pictureService.getPicture(Optional.of(true), Optional.of("2020-2-6"));
-
-		// then
-		verify(appConfig, times(1)).getServerUrl();
-		verify(restTemplate, times(1)).getForEntity(anyString(), any());
-		verify(reponseEntity, times(0)).getBody();
+		when(restTemplate.getForEntity(anyString(), any())).thenThrow(NullPointerException.class);
+		pictureService.getPicture(Optional.of(false), Optional.of("2020-2-6"));
 
 	}
 
