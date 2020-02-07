@@ -1,30 +1,69 @@
-# Read Me First
-The following was discovered as part of building this project:
 
-* The original package name 'org.nasa.nasa-pictures-of-given-days' is invalid and this project uses 'org.nasa.nasapicturesofgivendays' instead.
+# Programming exercise requirements
+This exercise is to use NASA Open APIs described [here](https://api.nasa.gov) to build a project in GitHub that calls the Mars Rover API and selects a picture on a given day. We want your application to download and store each image locally.
 
-# Getting Started
+### Acceptance Criteria
 
-### Reference Documentation
-For further reference, please consider the following sections:
+* Please send a link to the GitHub repo via <matt.hawkes@livingasone.com> when you are complete.
+* Use list of dates below to pull the images were captured on that day by reading in a text ﬁle:
+    * 02/27/17
+    * June 2, 2018
+    * Jul-13-2016
+    * April 31, 2018
+* Language needs to be *Java*.
+* We should be able to run and build (if applicable) locally after you submit it
+* Include relevant documentation (.MD, etc.) in the repo
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.1.12.RELEASE/maven-plugin/)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-security)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#using-boot-devtools)
-* [Spring cache abstraction](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-caching)
+### Bonus 
 
-### Guides
-The following guides illustrate how to use some features concretely:
+* Bonus - Unit Tests, Static Analysis, Performance tests or any other things you feel are important for Deﬁnition of Done
+* Double Bonus - Have the app display the image in a web browser
+* Triple Bonus – Have it run in a Docker or K8s (Preferable)
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-* [Caching Data with Spring](https://spring.io/guides/gs/caching/)
+
+# Solutions
+
+This application will call NASA open API to retrieve image's info on a given day
+
+* Image info contains: title, explanation, imageUrl, image and so on; 
+  We store varieties of image attributes on our application cache;
+
+* The cache server TTL and max objects to be cached is configurable in the application configuration.
+
+* When clients make the same request, our server will retrieve image info from cache.
+
+
+### Steps to build and run application 
+* Pre-requisites: 
+    * Install [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+    * Install [docker desktop](https://www.docker.com/products/docker-desktop)
+    * Install Maven
+* Download this application using git clone or download directly zip file.
+* Get into the root directory of this project and then run: mvn clean install
+* (Optional) this step is optional; In case you want to run Springboot application using docker image
+    * mvn clean install: the docker image will be built using docker maven plugin
+    * docker run -it [imageId]: run application in interactive mode in the container using port 8082
+
+### Steps to test 
+*Here are the APIs available 
+
+
+*Also you can test our APIs directly using our Swagger via this link after you start our application
+ 
+### Technologies/Framework used
+
+* Springboot
+* Java 8
+* lambok: remove boiler plate codes
+* Mockito: Unit test
+* SonarLint: static Analysis
+* Spring Test: integration testing
+* Spring Cache, Caffeine: Caching
+* Docker: containerized plateform
+* Git: source repositories
+* 
+ 
+###Future Improvement
+
+* Provided API needs to implement security: Authenticate client using API_KEY and access_token
 
