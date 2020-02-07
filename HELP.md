@@ -61,7 +61,7 @@ This application will call NASA open API to retrieve image's info on a given day
 * Github: codes repositories
 * Swagger: APIs documentation
  
-###Future Improvement
+### Future Improvement
 
 * These APIs need to implement security: Authenticate client using API Key and access token
 * It will be nice to have UI which can display this image information
