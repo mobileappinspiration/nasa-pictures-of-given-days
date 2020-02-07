@@ -40,8 +40,8 @@ public class PictureServiceImpl implements PictureService {
 		// call Nasa's API to get picture of the day
 		try {
 
-			String hdQueryString = hd.isPresent() ? "&hd=" + hd.get() : "";
-			String dateQueryString = date.isPresent() ? "&date=" + date.get() : "";
+			String hdQueryString = hd.map(aBoolean -> "&hd=" + aBoolean).orElse("");
+			String dateQueryString = date.map(s -> "&date=" + s).orElse("");
 			String uri = appConfig.getServerUrl() + "?api_key=" + appConfig.getApiKey() + hdQueryString
 					+ dateQueryString;
 
